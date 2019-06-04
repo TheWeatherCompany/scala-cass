@@ -19,7 +19,7 @@ version := {
     case (`cassV21`, "1.7") => "5"
     case (cv, jv) => throw new RuntimeException("invalid cassandra/java version combination: " + cv + "/" + jv + ". use either cass \"" + cassV3 + "\" with java 8 or cass \"" + cassV21 + "\" with java 7")
   }
-  s"0.$majorVersion.15"
+  s"0.$majorVersion.17"
 }
 
 scalaVersion := "2.11.8"
@@ -71,12 +71,12 @@ libraryDependencies ++= Seq(
   "com.whisk" %% "docker-testkit-scalatest" % "0.9.0-M5" % "test"
 ) ++ (cassVersion.value match {
   case `cassV3` => Seq(
-    "com.datastax.cassandra" % "cassandra-driver-core" % "3.1.0" classifier "shaded" excludeAll ExclusionRule("com.google.guava", "guava"),
-    "com.datastax.cassandra" % "cassandra-driver-extras" % "3.1.0" excludeAll (ExclusionRule("com.datastax.cassandra", "cassandra-driver-core"), ExclusionRule("com.google.guava", "guava")),
+    "com.datastax.cassandra" % "cassandra-driver-core" % "3.7.1" classifier "shaded" excludeAll ExclusionRule("com.google.guava", "guava"),
+    "com.datastax.cassandra" % "cassandra-driver-extras" % "3.7.1" excludeAll (ExclusionRule("com.datastax.cassandra", "cassandra-driver-core"), ExclusionRule("com.google.guava", "guava")),
     "org.cassandraunit" % "cassandra-unit" % "3.0.0.1" % "test"
   )
   case `cassV21` =>  Seq(
-    "com.datastax.cassandra" % "cassandra-driver-core" % "2.1.10.2" classifier "shaded" excludeAll ExclusionRule("com.google.guava", "guava"),
+    "com.datastax.cassandra" % "cassandra-driver-core" % "2.1.10.3" classifier "shaded" excludeAll ExclusionRule("com.google.guava", "guava"),
     "org.cassandraunit" % "cassandra-unit" % "2.2.2.1" % "test"
   )
   case _ => throw new RuntimeException("unknown cassVersion. use either \"" + cassV3 + "\" or \"" + cassV21 + "\"")
