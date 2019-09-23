@@ -581,7 +581,7 @@ r.as[org.joda.time.DateTime]("mydt") // cassandra "tuple<timestamp,varchar>"
 // under the hood ZonedDateTime uses a tuple, meaning the cluster must be implicit
 implicit val c: Cluster = _ // your cluster
 com.weather.scalacass.jdk8.register(c)
-import com.weather.scalacass.jdk8.Implicits._
+import com.weather.scalacass.Implicits._
 
 val r: Row = _ // some row from your cluster
 r.as[java.time.Instant]("mytimestamp") // cassandra "timestamp"

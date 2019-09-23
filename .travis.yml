@@ -1,14 +1,15 @@
 # use containers
 sudo: false
 
+dist: trusty
+
 language: scala
+
 scala:
-  - 2.11.8
-  - 2.10.6
+  - 2.11.12
 
 jdk:
   - oraclejdk8
-  - oraclejdk7
 
 before_cache:
   # Tricks to avoid unnecessary cache updates
