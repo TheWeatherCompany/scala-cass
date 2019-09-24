@@ -1,7 +1,7 @@
 package com.weather.scalacass
 
 object NotRecoverable extends NotRecoverableVersionSpecific {
-  def unapply(t: Throwable): Option[Throwable] = if (apply(t)) Some(t) else None
+  def unapply(t: Throwable): Option[Throwable] = Some(t).filter(apply)
 
   implicit class Try2Either[T](val t: scala.util.Try[T]) extends AnyVal {
     def unwrap[S](implicit ev: T =:= Either[Throwable, S]): Either[Throwable, S] = t match {

@@ -1,12 +1,11 @@
-package com.weather.scalacass.jdk8
+package com.weather.scalacass
 
-import com.weather.scalacass.{CassFormatDecoder, CassFormatEncoder}
-import com.weather.scalacass.CassFormatDecoderVersionSpecific.codecCassFormatDecoder
-import CassFormatEncoder.sameTypeCassFormatEncoder
 import java.time.{Instant, LocalDate, LocalTime, ZonedDateTime}
 
 import com.datastax.driver.core.{Cluster, DataType}
 import com.google.common.reflect.TypeToken
+import com.weather.scalacass.CassFormatEncoder.sameTypeCassFormatEncoder
+import com.weather.scalacass.CassFormatDecoderVersionSpecific.codecCassFormatDecoder
 
 object Implicits {
   implicit val timeEncoder: CassFormatEncoder[LocalTime] = sameTypeCassFormatEncoder(DataType.time)
